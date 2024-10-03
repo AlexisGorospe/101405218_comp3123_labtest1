@@ -1,6 +1,8 @@
 resolvedPromise = new Promise (function(resolve, reject){
-    setTimeout(() => {resolve("haha resolved")}, 500)
-    
+    setTimeout(() =>{
+        let success = {'message' : 'delayed success!'}
+        console.log(success);
+    }, 500)
 
 })
 resolvedPromise.then(
@@ -10,7 +12,13 @@ resolvedPromise.then(
 )
 
 rejectedPromise = new Promise (function(resolve, reject){
-    setTimeout(() => {reject("haha rejected")}, 500)
+    setTimeout(() => {
+        try{
+            throw new Error('error: delayed exception!');
+        } catch (e) {
+            console.error(e)
+        }
+    }, 500)
 })
 rejectedPromise.then(
     function(value){
